@@ -23,25 +23,23 @@ public class PropertiesListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 		ServletContext context = arg0.getServletContext();
 
-        //プロパティファイルを読み込み、アプリケーションスコープに設定する
-        try {
-            InputStream is = PropertiesListener.class.getClassLoader().getResourceAsStream("application.properties");
+		//プロパティファイルを読み込み、アプリケーションスコープに設定する
+		try {
+			InputStream is = PropertiesListener.class.getClassLoader().getResourceAsStream("application.properties");
 
-            Properties properties = new Properties();
-            properties.load(is);
-            is.close();
+			Properties properties = new Properties();
+			properties.load(is);
+			is.close();
 
-            Iterator<String> pit = properties.stringPropertyNames().iterator();
-            while (pit.hasNext()) {
-                String pname = pit.next();
-                context.setAttribute(pname, properties.getProperty(pname));
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+			Iterator<String> pit = properties.stringPropertyNames().iterator();
+			while (pit.hasNext()) {
+				String pname = pit.next();
+				context.setAttribute(pname, properties.getProperty(pname));
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-
 }

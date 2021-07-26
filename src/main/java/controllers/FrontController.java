@@ -40,6 +40,7 @@ public class FrontController extends HttpServlet {
 
 		try {
 			String actionString = request.getParameter(ForwardConst.ACT.getValue());
+			//System.out.println("str:"+actionString);
 			type = Class.forName(String.format("actions.%sAction", actionString));
 			action = (ActionBase) (type.asSubclass(ActionBase.class).getDeclaredConstructor().newInstance());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SecurityException

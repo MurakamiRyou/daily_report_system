@@ -23,7 +23,6 @@ public class EmployeeAction extends ActionBase {
 	}
 
 	public void index() throws ServletException, IOException {
-		System.out.println("index");
 		int page = getPage();
 		List<EmployeeView> employees = service.getPerPage(page);
 		long employeeCount = service.countAll();

@@ -3,7 +3,7 @@ package constants;
 //画面項目値等を定義するEnumクラス
 public enum AttributeConst {
 	//フラッシュメッセージ
-	FLUSH("fulush"),
+	FLUSH("flush"),
 
 	//一覧画面共通
 	MAX_ROW("maxRow"), PAGE("page"),

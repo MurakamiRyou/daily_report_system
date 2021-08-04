@@ -82,7 +82,8 @@ public class ReportAction extends ActionBase {
 					getRequestParam(AttributeConst.REP_TITLE),
 					getRequestParam(AttributeConst.REP_CONTENT),
 					null,
-					null);
+					null,
+					0);
 			List<String> errors = service.create(rv);
 			if (errors.size() > 0) {
 				putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン

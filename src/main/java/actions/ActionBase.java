@@ -37,6 +37,7 @@ public abstract class ActionBase {
 
 			String command = request.getParameter(ForwardConst.CMD.getValue());
 			commandMethod = this.getClass().getDeclaredMethod(command, new Class[0]);
+			//System.out.println(commandMethod);
 			commandMethod.invoke(this, new Object[0]); //メソッドに渡す引数はなし
 
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
@@ -112,6 +113,7 @@ public abstract class ActionBase {
 	protected int getPage() {
 		int page;
 		page = toNumber(request.getParameter(AttributeConst.PAGE.getValue()));
+		System.out.println("page:"+page);
 		if (page == Integer.MIN_VALUE) {
 			page = 1;
 		}

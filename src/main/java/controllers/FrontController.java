@@ -23,7 +23,7 @@ public class FrontController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("get");
+		//System.out.println("1");
 		ActionBase action = getAction(request, response);
 		action.init(getServletContext(), request, response);
 		action.process();
@@ -44,6 +44,7 @@ public class FrontController extends HttpServlet {
 			System.out.println("str:"+actionString);
 			type = Class.forName(String.format("actions.%sAction", actionString));
 			action = (ActionBase) (type.asSubclass(ActionBase.class).getDeclaredConstructor().newInstance());
+			//System.out.println(action);
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SecurityException
 				| IllegalArgumentException | InvocationTargetException | NoSuchMethodException e) {
 			action = new UnknownAction();

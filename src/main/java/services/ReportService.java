@@ -13,7 +13,7 @@ import models.validators.ReportValidator;
 
 public class ReportService extends ServiceBase{
 	public List<ReportView> getMinePerPage(EmployeeView employee, int page) {
-
+		System.out.println(page);
 		List<Report> reports = em.createNamedQuery(JpaConst.Q_REP_GET_ALL_MINE, Report.class)
 				.setParameter(JpaConst.JPQL_PARM_EMPLOYEE, EmployeeConverter.toModel(employee))
 				.setFirstResult(JpaConst.ROW_PER_PAGE * (page - 1))

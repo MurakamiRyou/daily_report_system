@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 
-import actions.views.EmployeeView;
 import actions.views.ReportView;
 import constants.AttributeConst;
 import constants.ForwardConst;
@@ -22,10 +21,12 @@ public class TopAction extends ActionBase {
 	}
 
 	public void index() throws ServletException, IOException {
-		EmployeeView loginEmployee = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
+		//EmployeeView loginEmployee = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
 		int page = getPage();
-		List<ReportView> reports = service.getMinePerPage(loginEmployee, page);
-		long myReportsCount = service.countAllMine(loginEmployee);
+		//		List<ReportView> reports = service.getMinePerPage(loginEmployee, page);
+		//		long myReportsCount = service.countAllMine(loginEmployee);
+		List<ReportView> reports = service.getAllPerPage(page);
+		long myReportsCount = service.countAll();
 		putRequestScope(AttributeConst.REPORTS, reports); //取得した日報データ
 		putRequestScope(AttributeConst.REP_COUNT, myReportsCount); //ログイン中の従業員が作成した日報の数
 		putRequestScope(AttributeConst.PAGE, page); //ページ数
